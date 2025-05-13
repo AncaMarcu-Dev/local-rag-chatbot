@@ -1,0 +1,16 @@
+# Bytecode
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+
+# Streamlit
+.streamlit/
+
+# OS and IDE files
+.DS_Store
+*.log
+*.swp
+.idea/
+.vscode/
