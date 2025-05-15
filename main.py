@@ -10,11 +10,11 @@ os.environ["STREAMLIT_WATCH_DIRECTORIES"] = "false"
 class RAGChatbot:
     def __init__(self, model_path):
         self.llm = Llama(
-            model_path=model_path,
-            n_ctx=2048,
-            n_threads=4,
-            chat_format="llama-2",
-            verbose=False
+        model_path=model_path,
+        n_ctx=2048,
+        n_threads=4,
+        chat_format="chatml",  # Changed from "llama-2"
+        verbose=False
         )
         self.embedder = SentenceTransformer("all-MiniLM-L6-v2")
         self.index = None
