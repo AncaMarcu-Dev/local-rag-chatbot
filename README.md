@@ -1,30 +1,50 @@
 # 🧠 Local RAG Chatbot
 
-A fully local Retrieval-Augmented Generation (RAG) chatbot using:
-- `LLaMA2/Mistral` via `llama-cpp-python`
-- Local document embedding with `sentence-transformers`
-- Vector search using `FAISS`
-- Frontend with `Streamlit`
+A lightweight, fully **local** Retrieval-Augmented Generation (RAG) chatbot that lets you query your own PDFs using natural language.
 
-## 🛠 Setup
+Powered by:
+- 🔍 `tinyllama` via `llama-cpp-python` for local language generation
+- 📚 `sentence-transformers` for local document embeddings
+- 📦 `FAISS` for fast vector similarity search
+- 🌐 `Streamlit` for a simple web interface
+
+All processing is done locally — your documents stay private.
+
+---
+
+## 🚀 Features
+- Upload a PDF and ask questions about its contents
+- Runs entirely offline — no internet or external API required
+- Small and fast model (e.g. TinyLlama) 
+
+---
+
+## 🛠️ Setup
+
 ```bash
 git clone <this-repo>
 cd local_rag_chatbot
 python -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate on Windows
+# Activate the virtual environment:
+# On macOS/Linux:
+source venv/bin/activate
+# On Windows:
+venv\Scripts\activate
 pip install -r requirements.txt
-```
+
 
 ## 📄 Usage
-1. Download a `.gguf` quantized LLaMA2 or Mistral model and place it in the `models/` folder.
-
-   Example from HuggingFace: [TheBloke/Mistral-7B-Instruct-v0.1-GGUF](https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GGUF)
+1. Download a `.gguf` model and place it in the `models/` folder.
+   Example from HuggingFace: https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/blob/main/tinyllama-1.1b-chat-v1.0.Q2_K.gguf
 
 2. Run the app:
 ```bash
 streamlit run streamlit_app.py
 ```
 
-3. Upload one or more PDFs. Their content will be indexed and merged into a single knowledge base.
+📌 Notes
+You can only upload one PDF at a time in the current version
 
-4. Ask questions, and the chatbot will respond using information from all uploaded PDFs.
+Supports small models for testing, but larger GGUF models also work with enough memory
+
+Tested with: tinyllama-1.1b-chat-v1.0.Q2_K.gguf on Windows
